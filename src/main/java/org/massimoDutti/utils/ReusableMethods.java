@@ -168,6 +168,17 @@ public class ReusableMethods{
         WebElement until = wait.until(ExpectedConditions.visibilityOf(element));
         return until;
     }
+
+    public static void smoothScrollToElement() {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });");
+        // Wait for a moment to allow the scroll to complete
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 }
 
 
