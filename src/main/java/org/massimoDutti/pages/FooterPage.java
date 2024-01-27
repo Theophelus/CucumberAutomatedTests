@@ -1,6 +1,7 @@
 package org.massimoDutti.pages;
 
 import org.massimoDutti.locators.FooterLocators;
+import org.massimoDutti.locators.LandingPageElements;
 import org.massimoDutti.utils.GetWebElements;
 //import org.massimoDutti.utils.Navigates;
 import org.massimoDutti.utils.Navigations;
@@ -58,5 +59,12 @@ public class FooterPage {
     public void openAllSocialMediaLinksInOneSession() {
         List<WebElement> elements = GetWebElements.getWebElementsByXpath(FooterLocators.socialLinks);
         Navigations.clickAllTheSocialMediaLinksAndOpenOnNewTab(elements);
+    }
+
+    //handle default Market pop up 
+    public void switchToPopupAndAccept(String element) {
+        WebElement popup = GetWebElements.getXpathElement(LandingPageElements.defaultMarketPopup);
+        String yesBtn = GetWebElements.getXpathElement(LandingPageElements.clickYesText).getText();
+        switchToPopupAndClick(popup, yesBtn.equalsIgnoreCase(element));
     }
 }
