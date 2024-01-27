@@ -2,19 +2,24 @@ package org.massimoDutti.pages;
 
 import org.massimoDutti.locators.FooterLocators;
 import org.massimoDutti.utils.GetWebElements;
-import org.massimoDutti.utils.Navigates;
+//import org.massimoDutti.utils.Navigates;
+import org.massimoDutti.utils.Navigations;
 import org.massimoDutti.utils.ReusableMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import static org.massimoDutti.locators.LandingPageElements.acceptCookies;
+import static org.massimoDutti.utils.Navigations.*;
 import static org.massimoDutti.utils.ReusableMethods.*;
 
 public class FooterPage {
     public FooterPage(WebDriver driver) {
-        new Navigates(driver);
+        new Navigations(driver);
         new ReusableMethods(driver);
     }
 
@@ -41,5 +46,17 @@ public class FooterPage {
             }
         }
         return false;
+    }
+
+    //open specific social link on a new tab
+    public void openNewWindow(String social) throws InterruptedException {
+        List<WebElement> elements = GetWebElements.getWebElementsByXpath(FooterLocators.socialLinks);
+        openLinkOnANewTabUsingJavaScript(social, elements);
+    }
+
+    //open all social media links in a new tab
+    public void openAllSocialMediaLinksInOneSession() {
+        List<WebElement> elements = GetWebElements.getWebElementsByXpath(FooterLocators.socialLinks);
+        Navigations.clickAllTheSocialMediaLinksAndOpenOnNewTab(elements);
     }
 }
