@@ -1,16 +1,11 @@
 package org.massimoDutti.utils;
 
+import org.massimoDutti.locators.LandingPageElements;
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Action;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Set;
 
 public class Navigations {
     private static WebDriver wedriver = null;
@@ -108,12 +103,30 @@ public class Navigations {
             throw new NoSuchElementException("Link " + staticLinks[i] + " is not visible in the given elements.");
         }
     }
-
     /*
     get attribute of the element and open in new tab using switchTo().newWindow()
      */
     public static void openNewTab(WebElement element) {
         String hrefLink = element.getAttribute("href");
         wedriver.switchTo().newWindow(WindowType.TAB).get(hrefLink);
+    }
+
+    //handle popups using frames
+    public static WebElement handlePopup(WebElement element) {
+        return element;
+    }
+
+    public static void switchToPopupAndClick(WebElement decisionBtn, boolean clickYes) {
+        try {
+            ReusableMethods.customWaitForSingleElement(decisionBtn, 10);
+            handlePopup(decisionBtn);
+            if (clickYes) {
+                GetWebElements.getXpathElement(LandingPageElements.clickYesText).click();
+            } else {
+                GetWebElements.getXpathElement(LandingPageElements.clickNoText).click();
+            }
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
     }
 }

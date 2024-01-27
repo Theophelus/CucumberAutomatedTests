@@ -8,4 +8,7 @@ public interface LandingPageElements {
     public String filterLanguageList = "//div[@class=\"list-button list-tertiary list-icons has-ico-pre\"]";
     public String acceptCookies = "//button[@id=\"onetrust-accept-btn-handler\"]";
     public String manPartialLink = "https://www.massimodutti.com/ww/men-n1343";
+    public String defaultMarketPopup = "//*[@id=\"BannerGeoblock\"]/div/div/div/div";
+    public String clickNoText = "//div[contains(text(), \"No\")]";
+    public String clickYesText = "//div[contains(text(), \"Yes\")]";
 }
