@@ -20,6 +20,11 @@ public class FooterStepdefs {
         FOOTER_PAGE.acceptCookies();
     }
 
+    @When("user switch to frame and accept the popup {string}")
+    public void userSwitchToFrameAndAcceptThePopup(String element) {
+        FOOTER_PAGE.switchToPopupAndAccept(element);
+    }
+
     @When("the user check of {string} header is visible")
     public void theUserCheckOfHeaderIsVisible(String element) throws Exception {
         FOOTER_PAGE.getMassimoDuttiTextHeader(element);
@@ -47,4 +52,5 @@ public class FooterStepdefs {
         FOOTER_PAGE.openAllSocialMediaLinksInOneSession();
         Thread.sleep(1000);
     }
+
 }
