@@ -35,4 +35,16 @@ public class FooterStepdefs {
     public void theUserValidateAllTheSocialNetworksOnMassimoDuttiSite(String social) {
         Assert.assertTrue(FOOTER_PAGE.validateSocials(social), "Socials validated");
     }
+
+    @Then("the user open social media links in a new tab {string}")
+    public void theUserOpenSocialMediaLinksInANewTab(String value) throws InterruptedException {
+        FOOTER_PAGE.openNewWindow(value);
+        Thread.sleep(5000);
+    }
+
+    @Then("the user open all the social media links in a new tab")
+    public void theUserOpenAllTheSocialMediaLinksInANewTab() throws InterruptedException {
+        FOOTER_PAGE.openAllSocialMediaLinksInOneSession();
+        Thread.sleep(1000);
+    }
 }
