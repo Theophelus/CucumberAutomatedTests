@@ -24,7 +24,6 @@ Make sure to update the pom.xml file with the latest versions of these dependenc
 
 Extent Reports with the Grasshopper plugin are used for reporting. The reports are generated after each test run. You
 can find the reports in the test-output/SparkReports directory.
-
 ### Contributing
 
 Feel free to contribute to the project by opening issues or submitting pull requests. 
