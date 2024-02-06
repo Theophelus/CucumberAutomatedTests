@@ -10,6 +10,8 @@ import org.massimoDutti.utils.TakeScreenshot;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 
@@ -22,13 +24,12 @@ public class Hooks {
         @Before
         public void setup() {
             String browser = Config.browser;
-
             if (browser.equalsIgnoreCase("edge")) {
                 if (driver == null) {
-                    WebDriverManager.edgedriver().setup();
-                    EdgeOptions options = new EdgeOptions();
-                    options.setCapability("ms:edgeOptions", "--no-sandbox");
-                    driver = new EdgeDriver();
+                    WebDriverManager.chromedriver().setup();
+                    ChromeOptions options = new ChromeOptions();
+//                    options.setCapability("ms:edgeOptions", "--no-sandbox");
+                    driver = new ChromeDriver(options);
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
                 }
