@@ -5,11 +5,13 @@ import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.massimoDutti.utils.Config;
 import org.massimoDutti.utils.TakeScreenshot;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 
 import java.time.Duration;
 
@@ -19,12 +21,19 @@ public class Hooks {
 
         @Before
         public void setup() {
-            if (driver == null) {
-                WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
-                driver.manage().window().maximize();
-                driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+            String browser = Config.browser;
+
+            if (browser.equalsIgnoreCase("edge")) {
+                if (driver == null) {
+                    WebDriverManager.edgedriver().setup();
+                    EdgeOptions options = new EdgeOptions();
+                    options.setCapability("ms:edgeOptions", "--no-sandbox");
+                    driver = new EdgeDriver();
+                    driver.manage().window().maximize();
+                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+                }
             }
+
         }
         @AfterStep
         public void takeScreenshot(Scenario scenario){
