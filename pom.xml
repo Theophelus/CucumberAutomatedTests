@@ -86,16 +86,28 @@
                     <target>11</target>
                 </configuration>
             </plugin>
+          <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <version>3.12.1</version>
+</plugin>
             <!--Adding maven surefire plugin-->
-            <plugin>
+ <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.5</version>
+                <version>3.0.0-M9</version>
                 <configuration>
-                    <suiteXmlFiles>
-                        <suiteXmlFile>testng.xml</suiteXmlFile>
-                    </suiteXmlFiles>
+                    <includes>
+                        <include>**/*TestRunner.java</include>
+                    </includes>
                 </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.surefire</groupId>
+                        <artifactId>surefire-api</artifactId>
+                        <version>3.0.0-M9</version>
+                    </dependency>
+                </dependencies>
             </plugin>
         </plugins>
     </build>
