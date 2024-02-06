@@ -21,7 +21,10 @@ public class Hooks {
         public void setup() {
             if (driver == null) {
                 WebDriverManager.edgedriver().setup();
-                driver = new EdgeDriver();
+                EdgeOptions options = new EdgeOptions();
+                //disable the sandbox mode for Edge
+                options.setCapability("ms:edgeOptions", "--no-sandbox");
+                driver = new EdgeDriver(options);
                 driver.manage().window().maximize();
                 driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
             }
