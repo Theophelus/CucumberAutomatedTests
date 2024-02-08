@@ -29,7 +29,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven and Run Cucumber Tests
-      run: mvn test -Dcucumber.options="src/test/resources/features/FooterPage.feature"
+      run: mvn test -Dcucumber.filter.tags="@footer"
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
