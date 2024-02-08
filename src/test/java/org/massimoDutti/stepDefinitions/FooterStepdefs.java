@@ -4,6 +4,7 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.massimoDutti.pages.FooterPage;
+import org.massimoDutti.pages.LandingPage;
 import org.massimoDutti.utils.Constant;
 import org.testng.Assert;
 
@@ -12,12 +13,14 @@ import static org.massimoDutti.hooks.Hooks.driver;
 public class FooterStepdefs {
 
     private static FooterPage FOOTER_PAGE;
+    private static LandingPage LANDING_PAGE;
 
     @Given("User landing on Massimo Dutti home page and accept cookies")
     public void userLandingOnMassimoDuttiHomePageAndAcceptCookies() throws InterruptedException {
         driver.get(Constant.HOME_PAGE_URL);
         FOOTER_PAGE = new FooterPage(driver);
-        FOOTER_PAGE.acceptCookies();
+        LANDING_PAGE = new LandingPage(driver);
+        LANDING_PAGE.acceptCookies();
     }
 
     @When("user switch to frame and accept the popup {string}")
