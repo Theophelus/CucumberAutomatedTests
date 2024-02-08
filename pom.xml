@@ -86,16 +86,16 @@
                     <target>11</target>
                 </configuration>
             </plugin>
-          <plugin>
-    <groupId>org.apache.maven.plugins</groupId>
-    <artifactId>maven-compiler-plugin</artifactId>
-    <version>3.12.1</version>
-</plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.12.1</version>
+            </plugin>
             <!--Adding maven surefire plugin-->
- <plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-     <version>3.2.5</version>
+                <version>3.2.5</version>
                 <configuration>
                     <includes>
                         <include>**/*TestRunner.java</include>
@@ -105,7 +105,7 @@
                     <dependency>
                         <groupId>org.apache.maven.surefire</groupId>
                         <artifactId>surefire-api</artifactId>
-                        <version>3.0.0-M5</version>
+                        <version>3.2.5</version>
                     </dependency>
                 </dependencies>
             </plugin>
