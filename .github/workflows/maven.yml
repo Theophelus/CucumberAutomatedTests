@@ -28,7 +28,7 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Build with Maven and test
+    - name: Build with Maven and Run Cucumber Tests
       run: mvn test -Dcucumber.filter.tags="@footer"
 
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
