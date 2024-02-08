@@ -7,6 +7,7 @@ import io.cucumber.java.Scenario;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.massimoDutti.utils.Config;
 import org.massimoDutti.utils.TakeScreenshot;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.time.Duration;
 
@@ -23,17 +25,18 @@ public class Hooks {
 
         @Before
         public void setup() {
-            String browser = Config.browser;
-            if (browser.equalsIgnoreCase("edge")) {
+            DesiredCapabilities capabilities = new DesiredCapabilities();
+            ChromeOptions options = new ChromeOptions();
+//            String browser = Config.browser;
+//            if (browser.equalsIgnoreCase("edge")) {
                 if (driver == null) {
-                    WebDriverManager.chromedriver().setup();
-                    ChromeOptions options = new ChromeOptions();
-//                    options.setCapability("ms:edgeOptions", "--no-sandbox");
+                    WebDriverManager.edgedriver().setup();
+                    options = getChromeOptions(capabilities);
                     driver = new ChromeDriver(options);
                     driver.manage().window().maximize();
                     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
                 }
-            }
+//            }
 
         }
         @AfterStep
@@ -53,4 +56,14 @@ public class Hooks {
             }
 
         }
+
+    public ChromeOptions getChromeOptions(DesiredCapabilities capabilities) {
+        ChromeOptions chromeOptions = new ChromeOptions();
+        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--disable-gpu");
+        chromeOptions.addArguments("--no-sandbox");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+        chromeOptions.merge(capabilities);
+        return chromeOptions;
+    }
 }
