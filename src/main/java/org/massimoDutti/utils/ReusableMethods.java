@@ -2,6 +2,7 @@ package org.massimoDutti.utils;
 
 import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
 import org.apache.commons.math3.analysis.function.Exp;
+import org.massimoDutti.locators.LandingPageElements;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -10,7 +11,7 @@ import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static org.massimoDutti.locators.LandingPageElements.acceptCookies;
+import static org.massimoDutti.locators.LandingPageElements.*;
 import static org.massimoDutti.utils.GetWebElements.*;
 
 public class ReusableMethods{
@@ -178,6 +179,14 @@ public class ReusableMethods{
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void handleConfigureCookies() throws InterruptedException {
+        customWaitForSingleElement(getXpathElement(configureCoookies), 30);
+        clickBtnCookies(configureCoookies);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        wait.until(ExpectedConditions.elementToBeClickable(getXpathElement(confirmConfiguredCookies))).click();
+        Thread.sleep(5000);
     }
 }
 

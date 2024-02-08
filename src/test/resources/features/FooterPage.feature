@@ -16,7 +16,7 @@ Feature: User should be able to validate social networks links under footer page
       | PINTEREST |
       | YOUTUBE   |
 
-  @footer
+#  @footer
   Scenario Outline: User should be able to open all social media links
     Given User landing on Massimo Dutti home page and accept cookies
     When  user switch to frame and accept the popup "Yes"
@@ -30,7 +30,7 @@ Feature: User should be able to validate social networks links under footer page
 #      | X           |
 #      | TIKTOK      |
 
-#    @footer
+  @footer
   Scenario: User should be able to open all the social media links in a session
     Given User landing on Massimo Dutti home page and accept cookies
     When user switch to frame and accept the popup "Yes"

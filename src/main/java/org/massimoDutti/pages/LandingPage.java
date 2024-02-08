@@ -55,8 +55,9 @@ public class LandingPage {
     public void clickOnGenderButtons(String element) throws InterruptedException {
         clickBtn(element);
     }
-    public void acceptCookies(){
-        clickBtnCookies(acceptCookies);
+
+    public void acceptCookies() throws InterruptedException {
+        handleConfigureCookies();
     }
 
     public Boolean validateLink(){

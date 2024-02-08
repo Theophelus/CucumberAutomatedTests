@@ -15,7 +15,7 @@ public class LandingPageStepDef {
     private static LandingPage landingPage;
 
     @Given("User landing on Massimo Dutti landing page and accept cookies")
-    public void userLandingOnMassimoDuttiLandingPageAndAcceptCookies() {
+    public void userLandingOnMassimoDuttiLandingPageAndAcceptCookies() throws InterruptedException {
         driver.get(Constant.URL);
         landingPage = new LandingPage(driver);
         landingPage.acceptCookies();
