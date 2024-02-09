@@ -29,7 +29,11 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven and Run Cucumber Tests
-      run: mvn clean test
+      run: |
+        mvn clean test -Dcucumber.filter.tags="@footer" | tee maven_output.txt
+        echo "MY_OUTPUT=$(cat maven_output.txt)" > output.env
+      env:
+        MY_OUTPUT: ${{ steps.build.outputs.MY_OUTPUT }}
         
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
