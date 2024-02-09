@@ -4,7 +4,9 @@ import io.cucumber.java.After;
 import io.cucumber.java.AfterStep;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
+import io.cucumber.java.an.E;
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.checkerframework.checker.units.qual.C;
 import org.massimoDutti.utils.Config;
 import org.massimoDutti.utils.TakeScreenshot;
 import org.openqa.selenium.Capabilities;
@@ -24,36 +26,34 @@ public class Hooks {
         @Before
         public void setup() {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            ChromeOptions options = getChromeOptions(capabilities);
-            WebDriverManager.chromedriver().setup();
-            driver = new ChromeDriver(options);
+            EdgeOptions options = getChromeOptions(capabilities);
+            WebDriverManager.edgedriver().setup();
+            driver = new EdgeDriver(options);
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         }
         @AfterStep
         public void takeScreenshot(Scenario scenario){
-
             TakesScreenshot screenshot = (TakesScreenshot) driver;
             final byte[] screenshotsByte = screenshot.getScreenshotAs(OutputType.BYTES);
             scenario.attach(screenshotsByte, "image/png", "image");
-
         }
         @After
         public void tearDown(Scenario scenario) {
-
             if (driver != null) {
                 driver.quit();
                 driver = null; // Resetting the driver to null after quitting
             }
-
         }
 
-    public ChromeOptions getChromeOptions(DesiredCapabilities capabilities) {
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--headless=new");
-//        options.addArguments("--disable-gpu");
-//        options.addArguments("--no-sandbox");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+    public EdgeOptions getChromeOptions(DesiredCapabilities capabilities) {
+        EdgeOptions options = new EdgeOptions();
+        options.addArguments("inprivate");
+        options.addArguments("start-maximized");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--disable-gpu");
+        options.addArguments("--headless");
+        capabilities.setCapability(EdgeOptions.CAPABILITY, options);
         options.merge(capabilities);
         return options;
     }
