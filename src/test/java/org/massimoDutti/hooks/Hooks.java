@@ -59,7 +59,7 @@ public class Hooks {
 
     public ChromeOptions getChromeOptions(DesiredCapabilities capabilities) {
         ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless");
+        chromeOptions.addArguments("--headless=new");
         chromeOptions.addArguments("--disable-gpu");
         chromeOptions.addArguments("--no-sandbox");
         capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
