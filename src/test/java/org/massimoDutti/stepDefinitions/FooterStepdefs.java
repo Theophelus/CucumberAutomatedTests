@@ -20,6 +20,7 @@ public class FooterStepdefs {
         driver.get(Constant.HOME_PAGE_URL);
         FOOTER_PAGE = new FooterPage(driver);
         LANDING_PAGE = new LandingPage(driver);
+        Thread.sleep(5000);
         LANDING_PAGE.acceptCookies();
     }
 

@@ -21,23 +21,14 @@ import java.time.Duration;
 
 public class Hooks {
         public static WebDriver driver;
-        TakeScreenshot takeScreenshot;
-
         @Before
         public void setup() {
             DesiredCapabilities capabilities = new DesiredCapabilities();
-            ChromeOptions options = new ChromeOptions();
-//            String browser = Config.browser;
-//            if (browser.equalsIgnoreCase("edge")) {
-                if (driver == null) {
-                    WebDriverManager.edgedriver().setup();
-                    options = getChromeOptions(capabilities);
-                    driver = new ChromeDriver(options);
-                    driver.manage().window().maximize();
-                    driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-                }
-//            }
-
+            ChromeOptions options = getChromeOptions(capabilities);
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver(options);
+            driver.manage().window().maximize();
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         }
         @AfterStep
         public void takeScreenshot(Scenario scenario){
@@ -58,12 +49,13 @@ public class Hooks {
         }
 
     public ChromeOptions getChromeOptions(DesiredCapabilities capabilities) {
-        ChromeOptions chromeOptions = new ChromeOptions();
-        chromeOptions.addArguments("--headless=new");
-        chromeOptions.addArguments("--disable-gpu");
-        chromeOptions.addArguments("--no-sandbox");
-        capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
-        chromeOptions.merge(capabilities);
-        return chromeOptions;
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--headless=new");
+//        options.addArguments("--disable-gpu");
+//        options.addArguments("--no-sandbox");
+        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
+        options.merge(capabilities);
+        return options;
     }
+
 }
