@@ -6,12 +6,9 @@ public class PageDriver {
     private static final ThreadLocal<WebDriver> webDriver = new ThreadLocal<>();
     //define private attribute of pageDriver class
     private static PageDriver instance = null;
-
     //define private constructor to restrict recreate of object outside class
     private PageDriver() {
-
     }
-
     //restring to one WebDriver object
     public static PageDriver getInstance() {
         if (instance == null) {
@@ -19,15 +16,17 @@ public class PageDriver {
         }
         return instance;
     }
-
     //set drivers
     public void setWebDriver(WebDriver driver) {
-        webDriver = driver;
+        webDriver.set(driver);
     }
-
     //get drivers
-    public WebDriver getDriver() {
+    public static WebDriver getWebDriver() {
         return webDriver.get();
     }
 
+    //get current driver
+    public static WebDriver getCurrentDriver() {
+        return getInstance().getWebDriver();
+    }
 }
