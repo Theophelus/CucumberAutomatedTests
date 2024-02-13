@@ -1,8 +1,7 @@
-package org.massimoDutti.utils;
+package org.anele.utils;
 
-import com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter;
-import org.apache.commons.math3.analysis.function.Exp;
-import org.massimoDutti.locators.LandingPageElements;
+import org.anele.base.DriverFactory;
+import org.anele.base.PageDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -11,19 +10,13 @@ import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static org.massimoDutti.locators.LandingPageElements.*;
-import static org.massimoDutti.utils.GetWebElements.*;
+import static org.anele.locators.LandingPageElements.*;
+import static org.anele.utils.GetWebElements.*;
 
-public class ReusableMethods{
-    private static WebDriver driver;
-    GetWebElements webElements;
-    public ReusableMethods(WebDriver driver) {
-            this.driver = driver;
-        webElements = new GetWebElements(driver);
-    }
+public class ReusableMethods {
 
     public static void setValues(By input, String value){
-        WebElement element = driver.findElement(input);
+        WebElement element = PageDriver.getWebDriver().findElement(input);
         String value1 = element.getAttribute("value");
         if (!value1.isEmpty()) {
             element.clear();
@@ -45,18 +38,18 @@ public class ReusableMethods{
             throw new RuntimeException(e);
         }
 
-        return driver.getCurrentUrl().equals(link);
+        return PageDriver.getWebDriver().getCurrentUrl().equals(link);
     }
     public static String validateHeader(String locator){
 
-        return driver.findElement(By.name(locator)).getText();
+        return PageDriver.getWebDriver().findElement(By.name(locator)).getText();
     }
     public static String hasText(String value){
         return "//button[normalize-space()='"+ value +"']";
     }
     //define an explicit wait method
     public static void customWaitForAListOfElements(List<WebElement> element, int waitInSeconds){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitInSeconds));
+        WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(waitInSeconds));
         wait.until(ExpectedConditions.visibilityOfAllElements(element));
     }
 
@@ -74,7 +67,7 @@ public class ReusableMethods{
             throw new NoSuchElementException("Provided "+value+" can not be located");
     }
     public static void customWaitForSingleElement(WebElement element, int waitInSeconds){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(waitInSeconds));
+        WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(waitInSeconds));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
     public static void clickBtn(String btn){
@@ -99,7 +92,7 @@ public class ReusableMethods{
     }
 
     public static void waitForElementToBeClicked(WebElement element, int timeInSeconds){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeInSeconds));
+        WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(timeInSeconds));
         wait.until(ExpectedConditions.elementToBeClickable(element));
     }
     public static String getText(String element) throws Exception {
@@ -165,13 +158,13 @@ public class ReusableMethods{
     }
 
     public static WebElement waitForElementPresent(WebElement element){
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(30));
         WebElement until = wait.until(ExpectedConditions.visibilityOf(element));
         return until;
     }
 
     public static void smoothScrollToElement() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
+        JavascriptExecutor js = (JavascriptExecutor) PageDriver.getWebDriver();
         js.executeScript("window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });");
         // Wait for a moment to allow the scroll to complete
         try {
@@ -182,9 +175,9 @@ public class ReusableMethods{
     }
 
     public static void handleConfigureCookies() throws InterruptedException {
-        customWaitForSingleElement(getXpathElement(configureCoookies), 30);
-        clickBtnCookies(configureCoookies);
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+        customWaitForSingleElement(getXpathElement(configureCookies), 30);
+        clickBtnCookies(configureCookies);
+        WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(30));
         wait.until(ExpectedConditions.elementToBeClickable(getXpathElement(confirmConfiguredCookies))).click();
         Thread.sleep(5000);
     }

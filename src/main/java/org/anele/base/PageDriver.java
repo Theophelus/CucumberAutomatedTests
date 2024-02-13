@@ -9,15 +9,8 @@ public class PageDriver {
     //define private constructor to restrict recreate of object outside class
     private PageDriver() {
     }
-    //restring to one WebDriver object
-    public static PageDriver getInstance() {
-        if (instance == null) {
-            instance = new PageDriver();
-        }
-        return instance;
-    }
     //set drivers
-    public void setWebDriver(WebDriver driver) {
+    public static void setWebDriver(WebDriver driver) {
         webDriver.set(driver);
     }
     //get drivers
@@ -25,8 +18,5 @@ public class PageDriver {
         return webDriver.get();
     }
 
-    //get current driver
-    public static WebDriver getCurrentDriver() {
-        return getInstance().getWebDriver();
-    }
+
 }
