@@ -1,4 +1,4 @@
-package org.massimoDutti.runner;
+package org.anele.runner;
 
 import org.testng.annotations.DataProvider;
 
