@@ -1,4 +1,4 @@
-package org.massimoDutti.locators;
+package org.anele.locators;
 
 public interface FooterLocators {
     public static final String socialLinks = "//*[@id=\"slice-flex-7f1e9ec1\"]//a";

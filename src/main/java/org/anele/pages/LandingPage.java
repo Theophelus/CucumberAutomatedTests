@@ -1,22 +1,24 @@
-package org.massimoDutti.pages;
+package org.anele.pages;
 
-import org.massimoDutti.utils.ReusableMethods;
-import org.massimoDutti.utils.GetWebElements;
+import org.anele.base.PageDriver;
+import org.anele.utils.ReusableMethods;
+import org.anele.utils.GetWebElements;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
-import static org.massimoDutti.locators.LandingPageElements.*;
-import static org.massimoDutti.utils.ReusableMethods.*;
-import static org.massimoDutti.utils.GetWebElements.*;
+import static org.anele.locators.LandingPageElements.*;
+import static org.anele.utils.ReusableMethods.*;
+import static org.anele.utils.GetWebElements.*;
 
 public class LandingPage {
     //define a constructor with Webdriver parameters
-    public LandingPage(WebDriver driver){
+//    WebDriver driver;
+    public LandingPage() {
         //define drivers
-        new ReusableMethods(driver);
+//        driver = PageDriver.getCurrentDriver();
     }
     public void clickSelectLocationBtn() {
         clickOnBtn(selectLocation);

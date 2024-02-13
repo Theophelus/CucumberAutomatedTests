@@ -1,6 +1,6 @@
-package org.massimoDutti.utils;
+package org.anele.utils;
 
-import org.massimoDutti.locators.LandingPageElements;
+import org.anele.locators.LandingPageElements;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 
