@@ -1,23 +1,19 @@
-package org.massimoDutti.stepDefinitions;
+package org.anele.stepDefinitions;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import org.massimoDutti.pages.LandingPage;
-import org.massimoDutti.utils.Constant;
+import org.anele.pages.LandingPage;
+import org.anele.utils.Constant;
 
 import org.testng.Assert;
-
-import static org.massimoDutti.hooks.Hooks.driver;
-
 public class LandingPageStepDef {
     private static LandingPage landingPage;
 
     @Given("User landing on Massimo Dutti landing page and accept cookies")
     public void userLandingOnMassimoDuttiLandingPageAndAcceptCookies() throws InterruptedException {
-        driver.get(Constant.URL);
-        landingPage = new LandingPage(driver);
+//        driver.get(Constant.BASE_URL);
+        landingPage = new LandingPage();
         landingPage.acceptCookies();
     }
     @Given("the user clicks on the Select Location button")

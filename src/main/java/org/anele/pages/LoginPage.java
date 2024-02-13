@@ -1,26 +1,17 @@
-package org.massimoDutti.pages;
+package org.anele.pages;
 
-import org.massimoDutti.locators.LoginPageLocators;
-import org.massimoDutti.utils.GetWebElements;
-import org.massimoDutti.utils.ReusableMethods;
+import org.anele.base.PageDriver;
+import org.anele.locators.LoginPageLocators;
+import org.anele.utils.ReusableMethods;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import java.util.Objects;
+import static org.anele.locators.LoginPageLocators.*;
+import static org.anele.utils.GetWebElements.getByLink;
+import static org.anele.utils.GetWebElements.getXpathElement;
+import static org.anele.utils.ReusableMethods.*;
 
-import static org.massimoDutti.locators.LoginPageLocators.*;
-import static org.massimoDutti.utils.GetWebElements.getByLink;
-import static org.massimoDutti.utils.GetWebElements.getXpathElement;
-import static org.massimoDutti.utils.ReusableMethods.*;
-
-public class LoginPage {
-
-    public static final GetWebElements GET_WEB_ELEMENTS = null;
-
-    public LoginPage(WebDriver driver) {
-        new ReusableMethods(driver);
-    }
-
+public class LoginPage extends ReusableMethods {
     public boolean validateText(String value) throws Exception {
        return getText(LoginPageLocators.loginTitle).equals(value);
     }
@@ -31,7 +22,6 @@ public class LoginPage {
         setRequiredField(passwordElements, password);
     }
     public void clickOnLoginBtn(String element) throws InterruptedException {
-
         WebElement btn = getXpathElement(LoginPageLocators.loginBtn);
         if (btn.getText().equals(element)){
             btn.click();

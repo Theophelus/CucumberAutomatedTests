@@ -1,9 +1,9 @@
-package org.massimoDutti.locators;
+package org.anele.locators;
 
 public interface LoginPageLocators {
     public String loginTitle = "//h2[contains(., \"Log in\")]";
-    public String emailInput = "//input[@id='emailInput']";
-    public String passwordInput = "//input[@id='passwordInput']";
+    public String emailInput = "//input[@placeholder='Username']";
+    public String passwordInput = "//input[@placeholder='Password']";
     public String forgotPassword = "//a[@class='p-s ttu']";
     public String loginBtn = "//button[@type='submit']";
     public String loginWithFacebook = ".btn.btn-facebook.btn-social.btn--full";
