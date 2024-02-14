@@ -32,8 +32,8 @@ public class LandingPageStepDef {
     }
 
     @And("the user clicks on the {string} button.")
-    public void theUserClicksOnTheButton(String value) throws InterruptedException {
-        landingPage.clickOnGenderButtons(value);
+    public void theUserClicksOnTheButton(String button) throws InterruptedException {
+        landingPage.clicksOnLoginButton(button);
     }
 
     @Then("the home page partial link is validated.")

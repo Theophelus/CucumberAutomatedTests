@@ -54,7 +54,7 @@ public class LandingPage {
        return getText(selectedLocation);
     }
     //click On Gender buttons
-    public void clickOnGenderButtons(String element) throws InterruptedException {
+    public void clicksOnLoginButton(String element) throws InterruptedException {
         clickBtn(element);
     }
 
