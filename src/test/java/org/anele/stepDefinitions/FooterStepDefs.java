@@ -1,28 +1,19 @@
-package org.massimoDutti.stepDefinitions;
-
+package org.anele.stepDefinitions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
-import org.massimoDutti.pages.FooterPage;
-import org.massimoDutti.pages.LandingPage;
-import org.massimoDutti.utils.Constant;
+import org.anele.pages.FooterPage;
 import org.testng.Assert;
 
-import static org.massimoDutti.hooks.Hooks.driver;
-
-public class FooterStepdefs {
-
+public class FooterStepDefs {
     private static FooterPage FOOTER_PAGE;
-    private static LandingPage LANDING_PAGE;
-
     @Given("User landing on Massimo Dutti home page and accept cookies")
-    public void userLandingOnMassimoDuttiHomePageAndAcceptCookies() throws InterruptedException {
-        driver.get(Constant.HOME_PAGE_URL);
-        FOOTER_PAGE = new FooterPage(driver);
-        LANDING_PAGE = new LandingPage(driver);
-        Thread.sleep(5000);
-        LANDING_PAGE.acceptCookies();
+    public void user_landing_on_massimo_dutti_home_page_and_accept_cookies() {
+        FOOTER_PAGE = new FooterPage();
+        //launch
+
     }
+
 
     @When("user switch to frame and accept the popup {string}")
     public void userSwitchToFrameAndAcceptThePopup(String element) {
