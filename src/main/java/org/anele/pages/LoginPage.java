@@ -12,8 +12,8 @@ import static org.anele.utils.GetWebElements.getXpathElement;
 import static org.anele.utils.ReusableMethods.*;
 
 public class LoginPage extends ReusableMethods {
-    public boolean validateText(String value) throws Exception {
-       return getText(LoginPageLocators.loginTitle).equals(value);
+    public String validateText() throws Exception {
+        return getText(LoginPageLocators.dashboardLocator);
     }
     public void loginUsingCredentials(String email, String password) throws Exception {
         WebElement emailElements = getXpathElement(LoginPageLocators.emailInput);
@@ -25,14 +25,17 @@ public class LoginPage extends ReusableMethods {
         WebElement btn = getXpathElement(LoginPageLocators.loginBtn);
         if (btn.getText().equals(element)){
             btn.click();
-            Thread.sleep(10000);
         }
     }
 
-    public String validateMyAccountLink(){
-        WebElement byLink = getByLink(myAccountLink);
-        return validateLinks(byLink);
+    public void landingPageLoginButton(String element) throws InterruptedException {
+        clickBtn(element);
     }
+
+    //    public String validateLandingPageHeader(){
+//        WebElement dashboardText = getByLink(landingPageHeader);
+//        return validateLinks(dashboardText);
+//    }
     public String validateWarningErrorMessage(){
         WebElement requiredFieldWarningMessage = getXpathElement(emailInfoMessage);
         return validateLinks(requiredFieldWarningMessage);

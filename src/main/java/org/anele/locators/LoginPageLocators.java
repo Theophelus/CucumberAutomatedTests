@@ -1,7 +1,7 @@
 package org.anele.locators;
 
 public interface LoginPageLocators {
-    public String loginTitle = "//h2[contains(., \"Log in\")]";
+    public String dashboardLocator = "//h6[@class=\"oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module\"]";
     public String emailInput = "//input[@placeholder='Username']";
     public String passwordInput = "//input[@placeholder='Password']";
     public String forgotPassword = "//a[@class='p-s ttu']";
@@ -10,7 +10,7 @@ public interface LoginPageLocators {
     public String rememberMeCheckbox = "//label[@for='rememberMe']";
     public String emailInfoMessage = "//div[@class=\"help p-s is-flex\"][1]";
     public String passwordInfoMessage = "//div[@class=\"help p-s is-flex\"][1]";
-    public String myAccountLink = "MY ACCOUNT";
+    //    public String landingPageHeader = "//h6[@class='oxd-text oxd-text--h6 oxd-topbar-header-breadcrumb-module']";
     public String fieldRequiredWarningMessage = "//*[@id=\"ItxCategoryPage\"]/body/app-root/layout-simple/div[2]/login/div/div/div/div[2]/div/div[1]/div/form/div/div[1]/input-email/div/div/validation-error/div/div/span";
 
 }
