@@ -17,39 +17,40 @@ public class DriverFactory {
         driver = PageDriver.getWebDriver();
     }
 
-    public static void getWebDriver() throws InterruptedException {
+    public static void getWebDriver(String browser) throws InterruptedException {
         if (driver == null) {
-            initBrowser();
+            initBrowser(browser);
         }
     }
 
-    public static void initBrowser() throws InterruptedException {
-        //define WebDriver instance
-//        DesiredCapabilities capabilities = new DesiredCapabilities();
-//        ChromeOptions options = new ChromeOptions();
-//        //run tests with desired capabilities
-//        if (Config.browserOptions){
-//            options = getChromeOptions(capabilities);
-//        }
-//        if (browser.equalsIgnoreCase("chrome")){
-//            //get configure browser values
-//            if (Config.browser.equalsIgnoreCase("local")){
-//                WebDriverManager.chromedriver().setup();
-//                driver = new ChromeDriver();
-//                maximizeBrowser(driver);
-//            }else {
-//                if (Config.platform.equalsIgnoreCase("remote")){
-//                    WebDriverManager.chromedriver().setup();
-//                    driver = new ChromeDriver(options);
-//                    maximizeBrowser(driver);
-//                }
-//            }
-//        }else
+    public static void initBrowser(String browser) throws InterruptedException {
+//        define WebDriver instance
+        DesiredCapabilities capabilities = new DesiredCapabilities();
+        ChromeOptions options = new ChromeOptions();
+        //run tests with desired capabilities
+        if (Config.browserOptions) {
+            options = getChromeOptions(capabilities);
+        }
+        if (browser.equalsIgnoreCase("chrome")) {
+            //get configure browser values
+            if (Config.browser.equalsIgnoreCase("local")) {
+                WebDriverManager.chromedriver().setup();
+                driver = new ChromeDriver(options);
+                maximizeBrowser(driver);
+            } else {
+                if (Config.platform.equalsIgnoreCase("remote")) {
+                    WebDriverManager.chromedriver().setup();
+                    driver = new ChromeDriver(options);
+                    maximizeBrowser(driver);
+                }
+            }
+        }
+//        else
 //        if (browser.equalsIgnoreCase("edge")){
-
-        WebDriverManager.edgedriver().setup();
-        driver = new EdgeDriver();
-        maximizeBrowser(driver);
+//
+//        WebDriverManager.edgedriver().setup();
+//        driver = new EdgeDriver();
+//        maximizeBrowser(driver);
 //        }
         driver.get(Constant.BASE_URL);
         Thread.sleep(10000);
