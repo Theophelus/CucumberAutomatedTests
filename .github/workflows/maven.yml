@@ -16,8 +16,12 @@ on:
 
 jobs:
   build:
-
+    #addin permissions
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+      repository-projects: write
 
     steps:
     - name: Checkout
