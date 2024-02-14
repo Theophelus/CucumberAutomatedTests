@@ -30,8 +30,6 @@ jobs:
         cache: maven
     - name: Build with Maven and Run Cucumber Tests
       run: mvn clean test -DbrowserOptions=true
-      env:
-        MY_OUTPUT: ${{ steps.build.outputs.MY_OUTPUT }}
         
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependabot alerts this repository can receive
     - name: Update dependency graph
