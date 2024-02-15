@@ -9,6 +9,24 @@
 name: Java CI with Maven
 
 on:
+  workflow_dispatch:
+    inputs:
+      browsername:
+        type: string
+        required: true
+        description: provide browser name
+
+      testcasename:
+        description: provide test case to run
+        type: string
+
+      tags:
+        description: Test scenario tags
+        required: false
+        type: boolean
+
+
+
   push:
     branches: [ "master" ]
   pull_request:
