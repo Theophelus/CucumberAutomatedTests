@@ -48,8 +48,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven and Run Cucumber Tests
-      run: mvn clean test -Dcucumber.options="--tags ${{input.testcasename}} --tags ${{input.tags}}"
-        -Dbroswer=${{input.browsername}}
+      run: mvn clean test -Dcucumber.options="--tags ${{inputs.testcasename}} --tags ${{inputs.tags}}"
+        -Dbroswer=${{inputs.browsername}}
         -DbrowserOptions=true
       
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependaot alerts this repository can receive
