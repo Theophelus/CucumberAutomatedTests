@@ -10,8 +10,8 @@ import org.anele.base.PageDriver;
 public class Hooks {
     @Before
     public void setup() throws InterruptedException {
-//        String browser = Config.browser;
-        DriverFactory.getWebDriver();
+        String browser = Config.browser;
+        DriverFactory.getWebDriver(browser);
         //set drivers
         System.out.println("Drivers to be set: " + PageDriver.getWebDriver());
         System.out.println("Driver instantiated" + PageDriver.getWebDriver().getTitle());

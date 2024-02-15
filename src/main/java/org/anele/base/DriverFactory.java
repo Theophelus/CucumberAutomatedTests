@@ -5,7 +5,6 @@ import org.anele.utils.Constant;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.time.Duration;
@@ -17,13 +16,13 @@ public class DriverFactory {
         driver = PageDriver.getWebDriver();
     }
 
-    public static void getWebDriver() throws InterruptedException {
+    public static void getWebDriver(String browser) throws InterruptedException {
         if (driver == null) {
-            initBrowser();
+            initBrowser(browser);
         }
     }
 
-    public static void initBrowser() throws InterruptedException {
+    public static void initBrowser(String browser) throws InterruptedException {
 //        define WebDriver instance
         DesiredCapabilities capabilities = new DesiredCapabilities();
         ChromeOptions options = new ChromeOptions();
@@ -31,13 +30,14 @@ public class DriverFactory {
         if (Config.browserOptions) {
             options = getChromeOptions(capabilities);
         }
-//        if (browser.equalsIgnoreCase("chrome")) {
+        if (browser.equalsIgnoreCase("chrome")) {
             //get configure browser values
 //            if (Config.browser.equalsIgnoreCase("local")) {
-        WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver(options);
-        maximizeBrowser(driver);
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver(options);
+            maximizeBrowser(driver);
 //            }
+        }
 //            else {
 //                if (Config.platform.equalsIgnoreCase("remote")) {
 //                    WebDriverManager.chromedriver().setup();
