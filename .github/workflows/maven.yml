@@ -23,15 +23,12 @@ on:
       tags:
         description: Test scenario tags
         required: false
-        type: boolean
+        type: string
 
-
-
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
-
+#  push:
+#    branches: [ "master" ]
+#  pull_request:
+#    branches: [ "master" ]
 jobs:
   build:
     #addin permissions
@@ -51,7 +48,9 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven and Run Cucumber Tests
-      run: mvn clean test -Dcucumber.options=src/test/resources/features -DbrowserOptions=true
+      run: mvn clean test -Dcucumber.options="--tage ${{input.testcasename}} --tags ${{input.tags}}"
+        -Dbroswer=${{input.browsername}}
+        -DbrowserOptions=true
       
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependaot alerts this repository can receive
     - name: Update dependency graph
