@@ -21,13 +21,11 @@ public class LoginPage extends ReusableMethods {
             btn.click();
         }
     }
-
     public void landingPageLoginButton(String element) throws InterruptedException {
         clickBtn(element);
     }
 
-    public String validateWarningErrorMessage(){
-        WebElement requiredFieldWarningMessage = getXpathElement(requiredField);
-        return validateLinks(requiredFieldWarningMessage);
+    public String validateWarningErrorMessage() throws Exception {
+        return getText(infoMessage);
     }
 }

@@ -4,7 +4,7 @@ Feature: Login functionality for Orange HRM Website Open Source HR Management
     I want to be able to login into my account,
     So I can access my account and manage all related functionality e.g my orders
 
-  @wip
+  @login
   Scenario: User should be able to login into Orange HRM Website Open Source HR Management using correct Credentials
     Given user landing to Orange HRM login Page
     When the user enter username email "Admin" and password "admin123"
@@ -19,6 +19,7 @@ Feature: Login functionality for Orange HRM Website Open Source HR Management
     Then the user should validate error message text "<requiredFields>"
 
     Examples:
-      | email | password | requiredFields |
-      |       | admin123 | Required       |
-      | Admin |          | Required       |
+      | email  | password | requiredFields      |
+      |        | admin123 | Required            |
+      | Admin  |          | Required            |
+      | frinir | rrikvnr  | Invalid credentials |
