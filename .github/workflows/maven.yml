@@ -14,14 +14,14 @@ on:
       browsername:
         type: string
         required: true
-        description: provide browser name
+        description: 'provide browser name'
 
       testcasename:
-        description: provide test case to run
+        description: 'provide test case to run'
         type: string
 
       tags:
-        description: Test scenario tags
+        description: 'Test scenario tags'
         required: false
         type: string
 
@@ -48,7 +48,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven and Run Cucumber Tests
-      run: mvn clean test -Dcucumber.options="--tage ${{input.testcasename}} --tags ${{input.tags}}"
+      run: mvn clean test -Dcucumber.options="--tags ${{input.testcasename}} --tags ${{input.tags}}"
         -Dbroswer=${{input.browsername}}
         -DbrowserOptions=true
       
