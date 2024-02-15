@@ -33,4 +33,8 @@ public class LoginPageStepDef {
         Assert.assertEquals(LOGIN_PAGE.validateText(), element, "Validating landing page Header is " + LOGIN_PAGE.validateText() + " ");
     }
 
+    @Then("the user should validate error message text {string}")
+    public void theUserShouldValidateErrorMessageText(String required) throws Exception {
+        Assert.assertEquals(LOGIN_PAGE.validateWarningErrorMessage(), required, "");
+    }
 }
