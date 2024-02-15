@@ -11,7 +11,7 @@ import org.testng.annotations.DataProvider;
         plugin = {"pretty", "html:target/cucumber-reports", "json:target/cucumber.json",
         "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true,
-        tags = "not @wip"
+        tags = "@login, @landingPage, @footer, @smoke, @regression and not @wip"
         )
 
 public class TestRunner extends AbstractTestNGCucumberTests implements TestRunners {
