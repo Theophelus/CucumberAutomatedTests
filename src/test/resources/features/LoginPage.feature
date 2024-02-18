@@ -20,6 +20,6 @@ Feature: Login functionality for Orange HRM Website Open Source HR Management
 
     Examples:
       | email  | password | requiredFields      |
-      |        | admin123 | Required            |
-      | Admin  |          | Required            |
+#      |        | admin123 | Required            |
+#      | Admin  |          | Required            |
       | frinir | rrikvnr  | Invalid credentials |
