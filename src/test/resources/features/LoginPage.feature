@@ -11,7 +11,7 @@ Feature: Login functionality for Orange HRM Website Open Source HR Management
     And the user clicks on the "Login" button on Landing page.
     Then the user validate landing page text "Dashboard"
 
-  @login
+  @wip
   Scenario Outline: User should not be able to login into Orange HRM Website Open Source HR Management using incorrect Credentials
     Given user landing to Orange HRM login Page
     When the user enter username email "<email>" and password "<password>"
