@@ -11,22 +11,22 @@ name: Java CI with Maven
 on:
   workflow_dispatch:
     inputs:
-      browsername:
+      browser_name:
         type: string
         required: true
-        description: 'provide browser name'
+        description: 'Provide browser name'
 
-      testcasename:
-        description: 'provide test case to run'
+      feature_path:
+        description: 'Provide test case to run'
         type: string
 
-      tags:
+      feature_tags:
         description: 'Test scenario tags'
         required: false
         type: string
 
-#  push:
-#    branches: [ "master" ]
+  push:
+   branches: [ "master" ]
 #  pull_request:
 #    branches: [ "master" ]
 jobs:
@@ -48,8 +48,8 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven and Run Cucumber Tests
-      run: mvn clean test -Dcucumber.options="--tags ${{inputs.testcasename}} --tags ${{inputs.tags}}"
-        -Dbroswer=${{inputs.browsername}}
+      run: mvn clean test -Dcucumber.options="--tags ${{inputs.feature_path}} --tags ${{inputs.fature_tags}}"
+        -Dbroswer=${{inputs.browser_name}}
         -DbrowserOptions=true
       
     # Optional: Uploads the full dependency graph to GitHub to improve the quality of Dependaot alerts this repository can receive
