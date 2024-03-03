@@ -8,10 +8,12 @@ import org.testng.annotations.DataProvider;
         features = "src/test/resources/features",
         glue = {"org.anele.hooks",
                 "org.anele.stepDefinitions"},
-        plugin = {"pretty", "html:target/cucumber-reports", "json:target/cucumber.json",
-        "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
+        plugin = {"pretty",
+                "html:target/cucumber-reports",
+                "json:target/cucumber.json",
+                "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true,
-        tags = "@login and not @wip"
+        tags = "@login and @homePage and not @wip"
         )
 
 public class TestRunner extends AbstractTestNGCucumberTests implements TestRunners {
