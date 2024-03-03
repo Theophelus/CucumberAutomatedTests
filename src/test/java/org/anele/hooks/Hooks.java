@@ -16,7 +16,6 @@ public class Hooks {
         System.out.println("Drivers to be set: " + PageDriver.getWebDriver());
         System.out.println("Driver instantiated" + PageDriver.getWebDriver().getTitle());
     }
-
     @After
     public void tearDown() {
         DriverFactory.quitDriver();

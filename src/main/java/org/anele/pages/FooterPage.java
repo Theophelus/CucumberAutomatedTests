@@ -1,22 +1,18 @@
 package org.anele.pages;
 
-import org.anele.base.PageDriver;
 import org.anele.locators.FooterLocators;
 import org.anele.locators.LandingPageElements;
 import org.anele.utils.GetWebElements;
 //import org.massimoDutti.utils.Navigates;
 import org.anele.utils.Navigations;
-import org.anele.utils.ReusableMethods;
-import org.openqa.selenium.WebDriver;
+import org.anele.utils.BaseCore;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-import static org.anele.locators.LandingPageElements.acceptCookies;
 import static org.anele.utils.Navigations.*;
-import static org.anele.utils.ReusableMethods.*;
 
-public class FooterPage extends ReusableMethods {
+public class FooterPage extends BaseCore {
     public String getMassimoDuttiTextHeader(String text) throws Exception {
         WebElement text1 = GetWebElements.getXpathElement(FooterLocators.massimoDuttiHeader);
         return (text1.getText().equals(text)) ? text1.getText() : "";

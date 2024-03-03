@@ -118,7 +118,7 @@ public class Navigations {
 
     public static void switchToPopupAndClick(WebElement decisionBtn, boolean clickYes) {
         try {
-            ReusableMethods.customWaitForSingleElement(decisionBtn, 10);
+            BaseCore.customWaitForSingleElement(decisionBtn, 10);
             handlePopup(decisionBtn);
             if (clickYes) {
                 GetWebElements.getXpathElement(LandingPageElements.clickYesText).click();

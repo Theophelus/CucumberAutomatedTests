@@ -1,6 +1,5 @@
 package org.anele.utils;
 
-import org.anele.base.DriverFactory;
 import org.anele.base.PageDriver;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,7 +12,7 @@ import java.util.NoSuchElementException;
 import static org.anele.locators.LandingPageElements.*;
 import static org.anele.utils.GetWebElements.*;
 
-public class ReusableMethods {
+public class BaseCore {
 
     public static void setValues(By input, String value){
         WebElement element = PageDriver.getWebDriver().findElement(input);
@@ -80,16 +79,6 @@ public class ReusableMethods {
             System.out.println(e.getMessage());
         }
     }
-    public static void clickBtnCookies(String btn){
-        boolean displayed = getXpathElement(btn).isDisplayed();
-        try{
-            if (displayed) {
-                getXpathElement(btn).click();
-            }
-        } catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-    }
 
     public static void waitForElementToBeClicked(WebElement element, int timeInSeconds){
         WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(timeInSeconds));
@@ -140,9 +129,6 @@ public class ReusableMethods {
     public static String getValue(WebElement element){
         return element.getAttribute("value");
     }
-    public static void acceptCookies(){
-        clickBtnCookies(acceptCookies);
-    }
 
     public static String validateLinks(WebElement element){
 
@@ -159,8 +145,7 @@ public class ReusableMethods {
 
     public static WebElement waitForElementPresent(WebElement element){
         WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(30));
-        WebElement until = wait.until(ExpectedConditions.visibilityOf(element));
-        return until;
+        return wait.until(ExpectedConditions.visibilityOf(element));
     }
 
     public static void smoothScrollToElement() {
@@ -172,14 +157,6 @@ public class ReusableMethods {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void handleConfigureCookies() throws InterruptedException {
-        customWaitForSingleElement(getXpathElement(configureCookies), 30);
-        clickBtnCookies(configureCookies);
-        WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(30));
-        wait.until(ExpectedConditions.elementToBeClickable(getXpathElement(confirmConfiguredCookies))).click();
-        Thread.sleep(5000);
     }
 }
 

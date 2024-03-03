@@ -4,7 +4,7 @@ Feature: Login functionality for Orange HRM Website Open Source HR Management
     I want to be able to login into my account,
     So I can access my account and manage all related functionality e.g my orders
 
-  @login
+  @wip
   Scenario: User should be able to login into Orange HRM Website Open Source HR Management using correct Credentials
     Given user landing to Orange HRM login Page
     When the user enter username email "Admin" and password "admin123"

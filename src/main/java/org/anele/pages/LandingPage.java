@@ -1,16 +1,13 @@
 package org.anele.pages;
 
-import org.anele.base.PageDriver;
-import org.anele.utils.ReusableMethods;
 import org.anele.utils.GetWebElements;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 import java.util.List;
 import java.util.NoSuchElementException;
 
 import static org.anele.locators.LandingPageElements.*;
-import static org.anele.utils.ReusableMethods.*;
+import static org.anele.utils.BaseCore.*;
 import static org.anele.utils.GetWebElements.*;
 
 public class LandingPage {
@@ -56,10 +53,6 @@ public class LandingPage {
     //click On Gender buttons
     public void clicksOnLoginButton(String element) throws InterruptedException {
         clickBtn(element);
-    }
-
-    public void acceptCookies() throws InterruptedException {
-        handleConfigureCookies();
     }
 
     public Boolean validateLink(){

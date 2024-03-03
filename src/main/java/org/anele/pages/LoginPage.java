@@ -1,11 +1,15 @@
 package org.anele.pages;
 import org.anele.locators.LoginPageLocators;
-import org.anele.utils.ReusableMethods;
+import org.anele.model.User;
+import org.anele.utils.JsonUtils;
+import org.anele.utils.BaseCore;
 import org.openqa.selenium.WebElement;
 import static org.anele.locators.LoginPageLocators.*;
 import static org.anele.utils.GetWebElements.getXpathElement;
 
-public class LoginPage extends ReusableMethods {
+public class LoginPage extends BaseCore {
+
+    User[] users = JsonUtils.readUserCredentialsJson();
     public String validateText() throws Exception {
         return getText(LoginPageLocators.dashboardLocator);
     }
