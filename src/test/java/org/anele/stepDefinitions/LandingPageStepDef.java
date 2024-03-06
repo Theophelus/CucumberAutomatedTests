@@ -12,7 +12,6 @@ public class LandingPageStepDef {
 
     @Given("User landing on Massimo Dutti landing page and accept cookies")
     public void userLandingOnMassimoDuttiLandingPageAndAcceptCookies() throws InterruptedException {
-//        driver.get(Constant.BASE_URL);
         landingPage = new LandingPage();
     }
     @Given("the user clicks on the Select Location button")
