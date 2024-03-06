@@ -13,7 +13,7 @@ import org.testng.annotations.DataProvider;
                 "json:target/cucumber.json",
                 "com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:"},
         monochrome = true,
-        tags = "@login and @homePage and not @wip"
+        tags = "@home and not @login and not @wip"
         )
 
 public class TestRunner extends AbstractTestNGCucumberTests implements TestRunners {
