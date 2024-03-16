@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>org.massimoDutti</groupId>
-    <artifactId>MassimoDuttiAutomation</artifactId>
+    <artifactId>CucumberAutomatedTests</artifactId>
     <version>1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>MassimoDuttiAutomation</name>
+    <name>CucumberAutomatedTests</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -80,11 +80,11 @@
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/io.cucumber/cucumber-picocontainer -->
-        <dependency>
-            <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-picocontainer</artifactId>
-            <version>7.15.0</version>
-        </dependency>
+<!--        <dependency>-->
+<!--            <groupId>io.cucumber</groupId>-->
+<!--            <artifactId>cucumber-picocontainer</artifactId>-->
+<!--            <version>7.15.0</version>-->
+<!--        </dependency>-->
 
 
     </dependencies>
