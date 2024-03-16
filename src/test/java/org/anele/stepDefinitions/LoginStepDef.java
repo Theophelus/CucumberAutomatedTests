@@ -4,9 +4,9 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.anele.utils.TestContext;
 
-public class LoginPageStepDef {
+public class LoginStepDef {
     private final TestContext login;
-     public LoginPageStepDef(TestContext context){
+     public LoginStepDef(TestContext context){
          this.login = context;
      }
 
