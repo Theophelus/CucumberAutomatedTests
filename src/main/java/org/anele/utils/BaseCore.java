@@ -43,9 +43,13 @@ public class BaseCore {
 
         return PageDriver.getWebDriver().findElement(By.name(locator)).getText();
     }
-    public static String hasText(String value){
+    public static String hasButtonValue(String value){
         return "//button[normalize-space()='"+ value +"']";
     }
+    public static String hasLinkValue(String value){
+        return "//a[normalize-space()='" +value+ "']";
+    }
+
     //define an explicit wait method
     public static void customWaitForAListOfElements(List<WebElement> element, int waitInSeconds){
         WebDriverWait wait = new WebDriverWait(PageDriver.getWebDriver(), Duration.ofSeconds(waitInSeconds));
@@ -70,10 +74,23 @@ public class BaseCore {
         wait.until(ExpectedConditions.visibilityOf(element));
     }
     public static void clickBtn(String btn){
-        boolean displayed = getXpathElement(hasText(btn)).isDisplayed();
+        boolean displayed = getXpathElement(hasButtonValue(btn)).isDisplayed();
+
         try{
             if (displayed) {
-                getXpathElement(hasText(btn)).click();
+                getXpathElement(hasButtonValue(btn)).click();
+            }
+
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+    }
+
+    public static void clickLinks(String value){
+        WebElement xpathElement = getXpathElement(value);
+        try {
+            if (xpathElement.getText().equalsIgnoreCase(value)){
+                xpathElement.click();
             }
         } catch (Exception e){
             System.out.println(e.getMessage());
