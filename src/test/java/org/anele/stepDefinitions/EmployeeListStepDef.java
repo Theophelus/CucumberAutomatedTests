@@ -19,11 +19,27 @@ public class EmployeeListStepDef {
     @And("^the User navigates to (.*) page$")
     public void theUserClicksOnTheLink(String value) throws InterruptedException {
         PIM_PAGE.clickPIM(value);
-        Thread.sleep(10000);
     }
     @Then("^the Employee List Tab should be pre selected$")
     public void employeeListTabIsPreSelected() {
         Assert.assertTrue(EMPLOYEE_LIST_PAGE.validateEmployeeListTabPreselected(),
                 "Employee List Tab is not preselected");
+    }
+
+    @Then("^the (.*) text is visible$")
+    public void theTextIsVisible(String value) throws Exception {
+        Assert.assertTrue(EMPLOYEE_LIST_PAGE.validateNumberOfRecords(value),
+                "No records found");
+    }
+
+    @Then("^click on the (.*) record from the list$")
+    public void clickOnTheRecordFromTheList(String value) throws InterruptedException {
+        EMPLOYEE_LIST_PAGE.clickEditOnSelectedRecord(value);
+    }
+
+    @Then("the User validates {string} header text")
+    public void theUserValidatesHeaderText(String value) throws Exception {
+        Assert.assertEquals(EMPLOYEE_LIST_PAGE.validatePersonalDetailsHeader(), value,
+                " '"+value+"' did not match: ");
     }
 }
