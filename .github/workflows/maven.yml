@@ -48,7 +48,7 @@ jobs:
         distribution: 'temurin'
         cache: maven
     - name: Build with Maven and Run Cucumber Tests
-      run: mvn clean test -Dcucumber.features="src/test/resources/features/${{inputs.feature_path}}" -Dcucumber.filter.tags="{{inputs.feature_tags}}"
+      run: mvn clean test -Dcucumber.features="src/test/resources/features/${{inputs.feature_path}}" -Dcucumber.filter.tags="${{inputs.feature_tags}}"
         -Dbrowser=${{inputs.browser_name}}
         -DbrowserOptions=true
       
