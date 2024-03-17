@@ -46,8 +46,10 @@ public class HomePage extends BaseCore {
         List<WebElement> elementList = GetWebElements.getWebElementsByXpath(listOfLinks);
 
         for (WebElement element: elementList){
+            //get attribute of the last from current element and get it's ststus
+            boolean linkWithActiveStatus = element.getAttribute("class")
+                    .contains("active");
 
-            boolean linkWithActiveStatus = element.getAttribute("class").contains("active");
             if (linkWithActiveStatus && element.getText().equalsIgnoreCase(value)){
                 System.out.println("It's match");
                 return true;
