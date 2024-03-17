@@ -14,5 +14,5 @@ Feature: Employee List on Orange HRM Management System
     And the User navigates to PIM page
     And the Employee List Tab should be pre selected
     And the Records Found text is visible
-    And click on the "" record from the list
+    And click on the 0273 record from the list
     Then the User validates "Personal Details" header text
