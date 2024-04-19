@@ -1,20 +1,20 @@
 package org.anele.utils;
 
-import org.anele.pages.EmployeeListPage;
-import org.anele.pages.HomePage;
-import org.anele.pages.LoginPage;
-import org.anele.pages.PIMPage;
+import org.anele.models.employees.AddEmployee;
+import org.anele.pages.*;
 
 public class TestContext {
     LoginPage loginPage;
     HomePage homePage;
     PIMPage pimPage;
     EmployeeListPage employeeListPage;
+    AddEmployeePage addEmployeePage;
     public TestContext(){
         loginPage = new LoginPage();
         homePage = new HomePage();
         pimPage = new PIMPage();
         employeeListPage = new EmployeeListPage();
+        addEmployeePage = new AddEmployeePage();
     }
     public LoginPage getLoginPage() {
         return loginPage;
@@ -25,8 +25,10 @@ public class TestContext {
     public PIMPage getPimPage() {
         return pimPage;
     }
-
     public EmployeeListPage getEmployeeListPage() {
         return employeeListPage;
+    }
+    public AddEmployeePage getAddEmployee() {
+        return addEmployeePage;
     }
 }
